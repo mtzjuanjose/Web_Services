@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soappractica3.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soappractica3.com" xmlns:intf="http://soappractica3.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soappractica3.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="sumarNumeros">
+    <complexType>
+     <sequence>
+      <element name="a" type="xsd:int"/>
+      <element name="b" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sumarNumerosResponse">
+    <complexType>
+     <sequence>
+      <element name="sumarNumerosReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="sumarNumerosRequest">
+
+      <wsdl:part element="impl:sumarNumeros" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="sumarNumerosResponse">
+
+      <wsdl:part element="impl:sumarNumerosResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OperacionesMatematicas">
+
+      <wsdl:operation name="sumarNumeros">
+
+         <wsdl:input message="impl:sumarNumerosRequest" name="sumarNumerosRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:sumarNumerosResponse" name="sumarNumerosResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OperacionesMatematicasSoapBinding" type="impl:OperacionesMatematicas">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="sumarNumeros">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sumarNumerosRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sumarNumerosResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OperacionesMatematicasService">
+
+      <wsdl:port binding="impl:OperacionesMatematicasSoapBinding" name="OperacionesMatematicas">
+
+         <wsdlsoap:address location="http://localhost:8080/WebServiceProject/services/OperacionesMatematicas"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
